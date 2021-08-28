@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Last5 from './last5.jsx';
 import Yournums from './Yournums.jsx';
-// import photo from '/client/images/Mega_Millions_logo.png';
+import photo from '../../dist/images/e408b56625d17b6ac03ab441d2b7c2a7.png';
 
 
 class Today extends React.Component {
@@ -43,8 +43,8 @@ class Today extends React.Component {
       }
     return (
       <div class="toplevel">
+          <img class ="today"src={photo} alt="Mega Millions Logo" />
         <div class="today">
-          {/* <img src={photo} alt="Mega Millions Logo" /> */}
           <div>Latest Draw Winning Numbers</div>
           <div>{today}</div>
           <div>{this.state.days5[0].winning_numbers}</div>

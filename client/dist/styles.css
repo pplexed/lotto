@@ -4,7 +4,7 @@
   width: 70%;
   padding: 5%;
   margin:auto;
-  border:1px solid red;
+  /* border:1px solid red; */
 }
 
 .today {
@@ -15,7 +15,7 @@
   padding: 1%;
   margin:auto;
 
-  border:1px solid green;
+  /* border:1px solid green; */
 }
 
 ul {
@@ -31,7 +31,7 @@ ul {
   width: 70%;
   padding: 1%;
   margin:auto;
-  border:1px solid green;
+  /* border:1px solid green; */
 }
 
 .nums {
@@ -41,5 +41,5 @@ ul {
   width: 70%;
   padding: 1%;
   margin:auto;
-  border:1px solid green;
+  /* border:1px solid green; */
 }
