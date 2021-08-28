@@ -7,7 +7,9 @@ class Yournums extends React.Component {
     this.state = {
       yourNums: '',
       matches: [],
-      numOfMatches: ''
+      numOfMatches: '',
+      winner: false,
+      loser: false
 
     }
     //binds here
@@ -19,6 +21,10 @@ class Yournums extends React.Component {
 
 
   numsMatch() {
+    this.setState({
+      winner: false,
+      loser: false
+    });
     const yourNumbers = this.state.yourNums.match(/.{1,2}/g);
     const winNumbers = this.props.compare.split(' ');
     // const matches =
@@ -37,16 +43,22 @@ class Yournums extends React.Component {
     //       numOfMatches: results.length
     //     });
     //   });
+    if (matches.length) {
+      this.setState({
+        winner: true,
+        loser: false
+      });
+    } else {
+      this.setState({
+        winner: false,
+        loser: true
+      });
+    }
 
-    console.log('the matches var: ', matches, 'length: ', matches.length)
     this.setState({
       matches: matches,
       numOfMatches: matches.length
-    }, () => {
-      console.log('this is state MILO: ', this.state.matches)
     });
-
-    console.log('the matches var: ', this.state.matches)
   }
 
   handleChange(event) {
@@ -63,17 +75,23 @@ class Yournums extends React.Component {
   }
 
   render() {
+    const days = this.state.matches || [];
+    const Listdays = days.map( (item) =>
+
+    <span class="ball">{item}</span>
+  )
     return (
       <div>
       <form onSubmit = {this.handleSubmit}>
         <label>
           Your Numbers:
-          <input type="text" maxLength="10" minLength="10" placeholder="0000000000" value={this.state.yourNums} onChange={this.handleChange} />
+          <input type="text" maxLength="10" minLength="10" placeholder="No Spaces" value={this.state.yourNums} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Match Your Numbers" />
       </form>
-      <div>You matched {this.state.numOfMatches} numbers!!</div>
-      <div>{this.state.matches.toString(' ')}</div>
+      <div className={this.state.winner ? '' : 'hidden'}>You matched {this.state.numOfMatches} numbers!!</div>
+      <div className={this.state.loser ? '' : 'hidden'}>Sorry you did not match any numbers</div>
+      <div class="matches"> {Listdays} </div>
       </div>
     );
   }
